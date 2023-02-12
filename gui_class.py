@@ -11,6 +11,11 @@ soz = Sozlamalar()
 
 class Gui():
     """____"""
+    
+    widjet_turlari = ["Button", "Canvas", "Checkbutton", "Entry", "Frame",
+                      "Label", "Listbox", "Menubutton", "Menu", "Message",
+                      "Radiobutton", "Scale", "Scrollbar", "Text", "Toplevel",
+                      "Spinbox", "PanedWindow", "LabelFrame", "tkMessageBox"]
 
     def __init__(self):
         """_____"""
@@ -58,95 +63,105 @@ class Gui():
         self.mg.grid(column=0, row=0, padx=10, pady=10)
     
     def widjetlar(self):
-        """_______"""
+        """
+        Widjet turlari
+            |--> Button
+            |--> Canvas
+            |--> Checkbutton
+            |--> Entry
+            |--> Frame
+            |--> Label
+            |--> Listbox
+            ...
+        """
 
         # 1-widjet turi: Label.
 
         ## 1-label.
-        self.style = ttk.Style()
-        self.style.configure("BW.TLabel", foreground="white", background="black")
-        self.lb = ttk.Label(self.mg, width=12, text="1-label", style="BW.TLabel")
-        self.lb.grid(column=0, row=0, padx=4, pady=4)
+        self.label1_style = ttk.Style()
+        self.label1_style.configure("BW.TLabel", foreground="white", background="black")
+        self.label1 = ttk.Label(self.mg, width=12, text="1-label", style="BW.TLabel")
+        self.label1.grid(column=0, row=0, padx=4, pady=4)
 
         # 2-widjet turi: Button.
         
         ## 1-button.
-        self.bt = ttk.Button(self.mg, text="OK", command=self.bt_funk)
-        self.bt.grid(column=2, row=0, padx=4, pady=4)
+        self.button1 = ttk.Button(self.mg, text="OK", command=self.button1_funk)
+        self.button1.grid(column=2, row=0, padx=4, pady=4)
         
         # 3-widjet turi: Entry.
 
         ## 1-entry.
-        self.et_str = tk.StringVar()
-        self.et = ttk.Entry(self.mg, width=12, textvariable=self.et_str)
-        self.et.grid(column=1, row=0)
+        self.entry1_str = tk.StringVar()
+        self.entry1 = ttk.Entry(self.mg, width=12, textvariable=self.entry_str)
+        self.entry1.grid(column=1, row=0)
         
         ### 1-entry-ga focus-ni o'ratish.
-        self.et.focus()
+        self.entry1.focus()
 
         # 4-widjet turi: Combobox.
 
         ## 1-combobox.
-        self.cb_str = tk.StringVar()
-        self.cb = ttk.Combobox(self.mg, width=12, textvariable=self.cb_str)
-        self.cb["values"] = (1996, 1997, 1998, 1999, 2000)
-        self.cb.grid(column=0, row=1)
-        self.cb.current(0)
+        self.combobox1_str = tk.StringVar()
+        self.combobox1 = ttk.Combobox(self.mg, width=12, textvariable=self.combobox1_str)
+        self.combobox1["values"] = (1996, 1997, 1998, 1999, 2000)
+        self.combobox1.grid(column=0, row=1)
+        self.combobox1.current(0)
 
         ## 2-combobox.
-        self.cb1_str = tk.StringVar()
-        self.cb1 = ttk.Combobox(self.mg, width=12, textvariable=self.cb1_str, state="readonly")
-        self.cb1["values"] = (1996, 1997, 1998, 1999, 2000)
-        self.cb1.grid(column=1, row=1)
-        self.cb1.current(0)
+        self.combobox2_str = tk.StringVar()
+        self.combobox2 = ttk.Combobox(self.mg, width=12, textvariable=self.combobox2_str, state="readonly")
+        self.combobox2["values"] = (1996, 1997, 1998, 1999, 2000)
+        self.combobox2.grid(column=1, row=1)
+        self.combobox2.current(0)
 
         # 5-widjet turi: Checkbutton.
 
         ## 1-checkbutton.
-        self.ch_var = tk.IntVar()
-        self.ch = tk.Checkbutton(self.mg, text="Nofaol", variable=self.ch_var, state=soz.NOFAOL)
-        self.ch.select()
-        self.ch.grid(column=0, row=3, sticky=soz.CHAP)
+        self.checkbutton1_var = tk.IntVar()
+        self.checkbutton1 = tk.Checkbutton(self.mg, text="Nofaol", variable=self.checkbutton1_var, state=soz.NOFAOL)
+        self.checkbutton1.select()
+        self.checkbutton1.grid(column=0, row=3, sticky=soz.CHAP)
 
         ## 2-checkbutton.
-        self.ch1_var = tk.IntVar()
-        self.ch1 = tk.Checkbutton(self.mg, text="Belgilanmagan", variable=self.ch1_var)
-        self.ch1.deselect()
-        self.ch1.grid(column=1, row=3, sticky=soz.CHAP)
+        self.checkbutton2_var = tk.IntVar()
+        self.checkbutton2 = tk.Checkbutton(self.mg, text="Belgilanmagan", variable=self.checkbutton2_var)
+        self.checkbutton2.deselect()
+        self.checkbutton2.grid(column=1, row=3, sticky=soz.CHAP)
 
         ## 3-checkbutton.
-        self.ch2_var = tk.IntVar()
-        self.ch2 = tk.Checkbutton(self.mg, text="Faol", variable=self.ch2_var)
-        self.ch2.select()
-        self.ch2.grid(column=2, row=3, sticky=soz.ONG)
+        self.checkbutton3_var = tk.IntVar()
+        self.checkbutton3 = tk.Checkbutton(self.mg, text="Faol", variable=self.checkbutton3_var)
+        self.checkbutton3.select()
+        self.checkbutton3.grid(column=2, row=3, sticky=soz.ONG)
 
         # 6-widjet turi: Radiobutton.
 
         ## 1-radiobutton.
-        self.rb_var = tk.IntVar()
-        self.rb = tk.Radiobutton(self.mg, text="Ko'k", variable=self.rb_var, value=1, command=self.rb_funk)
-        self.rb.grid(column=0, row=5, sticky=soz.CHAP, columnspan=3)
+        self.radiobutton1_var = tk.IntVar()
+        self.radiobutton1 = tk.Radiobutton(self.mg, text="Ko'k", variable=self.radiobutton1_var, value=1, command=self.radiobutton1_funk)
+        self.radiobutton1.grid(column=0, row=5, sticky=soz.CHAP, columnspan=3)
 
         ## 2-radiobutton.
-        self.rb2 = tk.Radiobutton(self.mg, text="Oltin", variable=self.rb_var, value=2, command=self.rb_funk)
-        self.rb2.grid(column=1, row=5, sticky=soz.CHAP, columnspan=3)
+        self.radiobutton2 = tk.Radiobutton(self.mg, text="Oltin", variable=self.radiobutton1_var, value=2, command=self.radiobutton1_funk)
+        self.radiobutton2.grid(column=1, row=5, sticky=soz.CHAP, columnspan=3)
 
         ## 3-radiobutton.
-        self.rb3 = tk.Radiobutton(self.mg, text="Qizil", variable=self.rb_var, value=3, command=self.rb_funk)
-        self.rb3.grid(column=2, row=5, sticky=soz.CHAP, columnspan=3)
+        self.radiobutton3 = tk.Radiobutton(self.mg, text="Qizil", variable=self.radiobutton1_var, value=3, command=self.radiobutton1_funk)
+        self.radiobutton3.grid(column=2, row=5, sticky=soz.CHAP, columnspan=3)
 
         # 7-widjet turi: ScrolledText.
 
         ## 1-scrolledtext.
         self.a = tk.WORD
-        self.st = scrolledtext.ScrolledText(self.mg, width=30, height=3, wrap=self.a)
-        self.st.grid(column=0, columnspan=3)
+        self.scrolledtext1 = scrolledtext.ScrolledText(self.mg, width=30, height=3, wrap=self.a)
+        self.scrolledtext1.grid(column=0, columnspan=3)
         
     # widjetlar bilan bo'g'lanadigan funksiyalar.
 
     ## 1, 2, 3 -radiobutton bilan bog'landigan funksiya.
-    def rb_funk(self):
-        x = self.rb_var.get()
+    def radiobutton1_funk(self):
+        x = self.radiobutton1_var.get()
         if x == 1:
             self.asosiy_oyna.configure(bg=soz.KOK)
         elif x == 2:
@@ -155,7 +170,7 @@ class Gui():
             self.asosiy_oyna.configure(bg=soz.QIZIL)
 
     ## 1-button bilan bog'lanadigan funksiya.
-    def bt_funk(self):
+    def button1_funk(self):
         pass
 
     def _yangi_hujjat(self):
@@ -165,8 +180,8 @@ class Gui():
         self.yangi_hujjat_oynasi.resizable(False, False)
         ## 1-scrolledtext.
         self.a = tk.WORD
-        self.st1 = scrolledtext.ScrolledText(self.yangi_hujjat_oynasi, width=70, height=34, wrap=self.a)
-        self.st1.grid(column=0, columnspan=3, padx=20, pady=20)
+        self.scrolledtext2 = scrolledtext.ScrolledText(self.yangi_hujjat_oynasi, width=70, height=34, wrap=self.a)
+        self.scrolledtext2.grid(column=0, columnspan=3, padx=20, pady=20)
         
         self.yangi_hujjat_oynasi.mainloop()
     
