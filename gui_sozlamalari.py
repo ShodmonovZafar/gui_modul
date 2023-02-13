@@ -4,7 +4,7 @@ class Sozlamalar:
     def __init__(self):
 
         # GUI sozlamalari
-        self.asosiy_oyna_nomi = "** TUB SONLAR **"
+        self.asosiy_oyna_nomi = "DASTUR NOMI"
         self.asosiy_oyna_balandligi = 300
         self.asosiy_oyna_kengligi = 300
 

@@ -39,28 +39,28 @@ class Gui():
         ## Asosiy oyna orqa fon rangini belgilash.
         self.asosiy_oyna.configure(bg=soz.asosiy_oyna_orqa_fon_rangi)
 
-    def tab_control(self):
+    def notebook(self):
         """____"""
         
         # 1-notebook.
-        self.tab_control = ttk.Notebook(self.asosiy_oyna)  # Create Tab Control.
+        self.notebook1 = ttk.Notebook(self.asosiy_oyna)
         
-        # 1-tab.
-        self.tab1 = ttk.Frame(self.tab_control)  # Create a tab.
-        self.tab_control.add(self.tab1, text="Tab 1")  # Add the tab.
+        # 1-frame.
+        self.frame1 = ttk.Frame(self.notebook1)
+        self.notebook1.add(self.frame1, text="frame1")
         
-        # 2-tab.
-        self.tab2 = ttk.Frame(self.tab_control)  # Create a tab.
-        self.tab_control.add(self.tab2, text="Tab 2")  # Add the tab.
+        # 2-frame.
+        self.frame2 = ttk.Frame(self.notebook1)
+        self.notebook1.add(self.frame2, text="frame2")
         
-        self.tab_control.pack(expand=1, fill="both")
+        self.notebook1.pack(expand=1, fill="both")
     
-    def mighty(self):
+    def label_frame(self):
         """"____"""
         
-        # 1-mighty.
-        self.mg = ttk.LabelFrame(self.tab1, text=" Mighty Python ")
-        self.mg.grid(column=0, row=0, padx=10, pady=10)
+        # 1-label_frame.
+        self.label_frame1 = ttk.LabelFrame(self.frame1, text="label_frame1")
+        self.label_frame1.grid(column=0, row=0, padx=10, pady=10)
     
     def widjetlar(self):
         """
@@ -78,22 +78,20 @@ class Gui():
         # 1-widjet turi: Label.
 
         ## 1-label.
-        self.label1_style = ttk.Style()
-        self.label1_style.configure("BW.TLabel", foreground="white", background="black")
-        self.label1 = ttk.Label(self.mg, width=12, text="1-label", style="BW.TLabel")
+        self.label1 = ttk.Label(self.label_frame1, width=12, text="1-label")
         self.label1.grid(column=0, row=0, padx=4, pady=4)
 
         # 2-widjet turi: Button.
         
         ## 1-button.
-        self.button1 = ttk.Button(self.mg, text="OK", command=self.button1_funk)
+        self.button1 = ttk.Button(self.label_frame1, text="OK", command=self.button1_funk)
         self.button1.grid(column=2, row=0, padx=4, pady=4)
         
         # 3-widjet turi: Entry.
 
         ## 1-entry.
         self.entry1_str = tk.StringVar()
-        self.entry1 = ttk.Entry(self.mg, width=12, textvariable=self.entry_str)
+        self.entry1 = ttk.Entry(self.label_frame1, width=12, textvariable=self.entry1_str)
         self.entry1.grid(column=1, row=0)
         
         ### 1-entry-ga focus-ni o'ratish.
@@ -103,14 +101,14 @@ class Gui():
 
         ## 1-combobox.
         self.combobox1_str = tk.StringVar()
-        self.combobox1 = ttk.Combobox(self.mg, width=12, textvariable=self.combobox1_str)
+        self.combobox1 = ttk.Combobox(self.label_frame1, width=12, textvariable=self.combobox1_str)
         self.combobox1["values"] = (1996, 1997, 1998, 1999, 2000)
         self.combobox1.grid(column=0, row=1)
         self.combobox1.current(0)
 
         ## 2-combobox.
         self.combobox2_str = tk.StringVar()
-        self.combobox2 = ttk.Combobox(self.mg, width=12, textvariable=self.combobox2_str, state="readonly")
+        self.combobox2 = ttk.Combobox(self.label_frame1, width=12, textvariable=self.combobox2_str, state="readonly")
         self.combobox2["values"] = (1996, 1997, 1998, 1999, 2000)
         self.combobox2.grid(column=1, row=1)
         self.combobox2.current(0)
@@ -119,19 +117,19 @@ class Gui():
 
         ## 1-checkbutton.
         self.checkbutton1_var = tk.IntVar()
-        self.checkbutton1 = tk.Checkbutton(self.mg, text="Nofaol", variable=self.checkbutton1_var, state=soz.NOFAOL)
+        self.checkbutton1 = tk.Checkbutton(self.label_frame1, text="Nofaol", variable=self.checkbutton1_var, state=soz.NOFAOL)
         self.checkbutton1.select()
         self.checkbutton1.grid(column=0, row=3, sticky=soz.CHAP)
 
         ## 2-checkbutton.
         self.checkbutton2_var = tk.IntVar()
-        self.checkbutton2 = tk.Checkbutton(self.mg, text="Belgilanmagan", variable=self.checkbutton2_var)
+        self.checkbutton2 = tk.Checkbutton(self.label_frame1, text="Belgilanmagan", variable=self.checkbutton2_var)
         self.checkbutton2.deselect()
         self.checkbutton2.grid(column=1, row=3, sticky=soz.CHAP)
 
         ## 3-checkbutton.
         self.checkbutton3_var = tk.IntVar()
-        self.checkbutton3 = tk.Checkbutton(self.mg, text="Faol", variable=self.checkbutton3_var)
+        self.checkbutton3 = tk.Checkbutton(self.label_frame1, text="Faol", variable=self.checkbutton3_var)
         self.checkbutton3.select()
         self.checkbutton3.grid(column=2, row=3, sticky=soz.ONG)
 
@@ -139,24 +137,36 @@ class Gui():
 
         ## 1-radiobutton.
         self.radiobutton1_var = tk.IntVar()
-        self.radiobutton1 = tk.Radiobutton(self.mg, text="Ko'k", variable=self.radiobutton1_var, value=1, command=self.radiobutton1_funk)
+        self.radiobutton1 = tk.Radiobutton(self.label_frame1, text="Ko'k", variable=self.radiobutton1_var, value=1, command=self.radiobutton1_funk)
         self.radiobutton1.grid(column=0, row=5, sticky=soz.CHAP, columnspan=3)
 
         ## 2-radiobutton.
-        self.radiobutton2 = tk.Radiobutton(self.mg, text="Oltin", variable=self.radiobutton1_var, value=2, command=self.radiobutton1_funk)
+        self.radiobutton2 = tk.Radiobutton(self.label_frame1, text="Oltin", variable=self.radiobutton1_var, value=2, command=self.radiobutton1_funk)
         self.radiobutton2.grid(column=1, row=5, sticky=soz.CHAP, columnspan=3)
 
         ## 3-radiobutton.
-        self.radiobutton3 = tk.Radiobutton(self.mg, text="Qizil", variable=self.radiobutton1_var, value=3, command=self.radiobutton1_funk)
+        self.radiobutton3 = tk.Radiobutton(self.label_frame1, text="Qizil", variable=self.radiobutton1_var, value=3, command=self.radiobutton1_funk)
         self.radiobutton3.grid(column=2, row=5, sticky=soz.CHAP, columnspan=3)
 
         # 7-widjet turi: ScrolledText.
 
         ## 1-scrolledtext.
         self.a = tk.WORD
-        self.scrolledtext1 = scrolledtext.ScrolledText(self.mg, width=30, height=3, wrap=self.a)
+        self.scrolledtext1 = scrolledtext.ScrolledText(self.label_frame1, width=30, height=3, wrap=self.a)
         self.scrolledtext1.grid(column=0, columnspan=3)
-        
+
+    def css(self):
+
+        self.frame2_style = ttk.Style()
+        self.frame2_style.configure("BW.TFrame", foreground="white", background="black")
+
+        # 1-label.
+        self.label1_style = ttk.Style()
+        self.label1_style.configure("BW.TLabel", foreground="white", background="black")
+        self.label1.configure(style="BW.TLabel")
+        self.frame1.configure(style="BW.TFrame")
+
+
     # widjetlar bilan bo'g'lanadigan funksiyalar.
 
     ## 1, 2, 3 -radiobutton bilan bog'landigan funksiya.
@@ -172,7 +182,7 @@ class Gui():
     ## 1-button bilan bog'lanadigan funksiya.
     def button1_funk(self):
         pass
-
+        
     def _yangi_hujjat(self):
         self.yangi_hujjat_oynasi = tk.Tk()
         self.yangi_hujjat_oynasi.title("Yangi hujjat")
