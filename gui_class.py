@@ -33,11 +33,6 @@ class Gui():
 
         ## Asosiy oyna o'lchamini o'zgarmaydigan yoki o'zgaradigan qilish.
         self.asosiy_oyna.resizable(False, False)
-        
-        # Asosiy oyna sozlamalari.
-
-        ## Asosiy oyna orqa fon rangini belgilash.
-        self.asosiy_oyna.configure(bg=soz.asosiy_oyna_orqa_fon_rangi)
 
     def notebook(self):
         """____"""
@@ -156,15 +151,16 @@ class Gui():
         self.scrolledtext1.grid(column=0, columnspan=3)
 
     def css(self):
+        self.asosiy_oyna.configure(bg="#ccaa00", padx=4, pady=4)
 
-        self.frame2_style = ttk.Style()
-        self.frame2_style.configure("BW.TFrame", foreground="white", background="black")
+        # self.frame2_style = ttk.Style()
+        # self.frame2_style.configure("BW.TFrame", foreground="white", background="#215462")
 
-        # 1-label.
-        self.label1_style = ttk.Style()
-        self.label1_style.configure("BW.TLabel", foreground="white", background="black")
-        self.label1.configure(style="BW.TLabel")
-        self.frame1.configure(style="BW.TFrame")
+        # # 1-label.
+        # self.label1_style = ttk.Style()
+        # self.label1_style.configure("BW.TLabel", foreground="white", background="black")
+        # self.label1.configure(style="BW.TLabel")
+        # self.frame1.configure(style="BW.TFrame")
 
 
     # widjetlar bilan bo'g'lanadigan funksiyalar.

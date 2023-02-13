@@ -9,7 +9,7 @@ class Sozlamalar:
         self.asosiy_oyna_kengligi = 300
 
         # Orqa fon sozlamalari.
-        self.asosiy_oyna_orqa_fon_rangi = "#00ff00"
+        self.asosiy_oyna_orqa_fon_rangi = "#212154"
 
         # O'zgarmaslar.
 
